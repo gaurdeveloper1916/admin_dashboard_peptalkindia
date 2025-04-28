@@ -52,6 +52,7 @@
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",
     "dayjs": "^1.11.10",
+    "dotenv": "^16.5.0",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
     "lucide-react": "^0.453.0",

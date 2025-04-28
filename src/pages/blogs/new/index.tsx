@@ -107,15 +107,15 @@ export default function EditBlogPage() {
         form.setValue("coverImage", url, { shouldValidate: true });
     };
 
-    const AuthToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MGZlM2NiOTZiOTQ4ZDhhODAyMzNjOSIsImlhdCI6MTc0NTg3MjA0NCwiZXhwIjoxNzQ1OTU4NDQ0fQ.wTfy5oqd5n24EIlRXz8HpPYGcAcJcsHkR_UkRK1Sw0g";
+    const AuthToken = localStorage.getItem('token');
 
     const onSubmit = async (data: any) => {
         try {
             setIsSubmitting(true);
 
-            const response = await fetch("http://localhost:8080/blogs", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
                 method: "POST",
+                //@ts-ignore
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: AuthToken,

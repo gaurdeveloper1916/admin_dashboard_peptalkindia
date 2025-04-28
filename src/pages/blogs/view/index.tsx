@@ -64,7 +64,7 @@ export default function view() {
   const [blogToDelete, setBlogToDelete] = useState<string | null>(null);
 //   const { toast } = useToast();
 
-  const authToken: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MGZlM2NiOTZiOTQ4ZDhhODAyMzNjOSIsImlhdCI6MTc0NTg3MjA0NCwiZXhwIjoxNzQ1OTU4NDQ0fQ.wTfy5oqd5n24EIlRXz8HpPYGcAcJcsHkR_UkRK1Sw0g";
+  const authToken = localStorage.getItem('token');  ;
 
   const fetchBlogs = async () => {
     try {
@@ -74,7 +74,8 @@ export default function view() {
       if (searchTerm) params.append("search", searchTerm);
       if (filterStatus) params.append("status", filterStatus);
 
-      const response = await fetch(`http://localhost:8080/blogs`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
+        //@ts-ignore
         headers: {
           Authorization: authToken,
         },
@@ -135,6 +136,7 @@ export default function view() {
         `http://localhost:6000/blogs/${blogToDelete}`,
         {
           method: "DELETE",
+          //@ts-ignore
           headers: {
             "Content-Type": "application/json",
             Authorization: authToken,

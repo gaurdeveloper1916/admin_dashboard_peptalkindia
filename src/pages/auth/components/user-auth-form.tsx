@@ -17,6 +17,7 @@ import { Button } from '@/components/custom/button'
 import { PasswordInput } from '@/components/custom/password-input'
 import { cn } from '@/lib/utils'
 import { toast } from '@/components/ui/use-toast'
+import axios from 'axios'
 
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> { }
 
@@ -57,14 +58,24 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     setIsLoading(true)
     console.log('Submitting form...', data)
     try {
-      const user = sampleUsers.find(
-        (u) => u.email === data.email && u.password === data.password
-      )
-      if (user) {
+      const payload = {
+        email: data.email,
+        password: data.password,
+      };
+
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, payload);
+
+      const token = response.data.token; // assuming backend returns { token: '...' }
+
+      if (token) {
+        localStorage.setItem('token', token);
+        navigate('/'); // after login, go to dashboard or home
+      }
+      if (token) {
         console.log('Login successful, navigating to /')
         toast({
           title: 'Login Successful',
-          description: `Welcome, ${user.role}!`,
+          description: `Welcome, Rocky!`,
         })
         setTimeout(() => navigate('/'), 1000)
       } else {
