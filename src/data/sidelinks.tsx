@@ -33,6 +33,27 @@ export const sidelinks: SideLink[] = [
     icon: <IconLayoutKanban size={18} />,
   },
   {
+    title: 'Blogs',
+    label: '',
+    href: '/blogs',
+    icon: <IconLayoutKanban size={18} />,
+    sub: [
+      {
+        title: 'Blog',
+        label: '',
+        href: '/blogs/view',
+        icon: <IconBrandProducthunt size={18} />,
+      },
+      {
+        title: 'Add Blogs',
+        label: '',
+        href: '/blogs/new',
+        icon: <IconBrandProducthunt size={18} />,
+      }
+    ],
+    
+  },
+  {
     title: 'Products',
     label: '',
     href: '',

@@ -5,7 +5,6 @@ import MaintenanceError from './pages/errors/maintenance-error'
 import UnauthorisedError from './pages/errors/unauthorised-error.tsx'
 
 const router = createBrowserRouter([
-
   {
     path: '/',
     lazy: async () => {
@@ -25,6 +24,26 @@ const router = createBrowserRouter([
         lazy: async () => ({
           Component: (await import('@/pages/kanban')).default,
         }),
+      },
+      {
+        path: 'blogs',
+        lazy: async () => ({
+          Component: (await import('./pages/blogs')).default,
+        }),
+        children: [
+          {
+            path: 'new',
+            lazy: async () => ({
+              Component: (await import('./pages/blogs/new')).default,
+            }),
+          },
+          {
+            path: 'view',
+            lazy: async () => ({
+              Component: (await import('./pages/blogs/view')).default,
+            }),
+          },
+        ],
       },
       {
         path: 'product',
@@ -93,7 +112,7 @@ const router = createBrowserRouter([
           Component: (await import('@/pages/tasks')).default,
         }),
       },
-     
+
       {
         path: 'supports',
         lazy: async () => ({
@@ -186,7 +205,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  
+
 
   { path: '/500', Component: GeneralError },
   { path: '/404', Component: NotFoundError },
