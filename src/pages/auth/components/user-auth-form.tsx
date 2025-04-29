@@ -37,11 +37,11 @@ const formSchema = z.object({
 })
 
 // Sample user accounts for testing
-const sampleUsers = [
-  { id: '1', email: 'admin@gmail.com', password: 'admin@gmail.com', role: 'admin' },
-  { id: '2', email: 'staff@gmail.com', password: 'staff@gmail.com', role: 'staff' },
-  { id: '3', email: 'root@gmail.com', password: 'root@gmail.com', role: 'root' },
-]
+// const sampleUsers = [
+//   { id: '1', email: 'admin@gmail.com', password: 'admin@gmail.com', role: 'admin' },
+//   { id: '2', email: 'staff@gmail.com', password: 'staff@gmail.com', role: 'staff' },
+//   { id: '3', email: 'root@gmail.com', password: 'root@gmail.com', role: 'root' },
+// ]
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = useState(false)

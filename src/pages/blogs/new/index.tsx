@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast"
-import { Loader2, Save, ArrowLeft, EyeOff, Eye } from "lucide-react";
+import { Loader2, ArrowLeft, EyeOff, Eye } from "lucide-react";
 import { Button } from "@/components/custom/button";
 import { ImageUpload } from "@/components/ImageUpload";
 import TinyEditor from "@/components/TinyEditor";
@@ -76,31 +76,31 @@ export default function EditBlogPage() {
         form.setValue("slug", slug, { shouldValidate: true });
     };
 
-    const handleUploadImage = async (file: any) => {
-        try {
-            const formData = new FormData();
-            formData.append("file", file);
+    // const handleUploadImage = async (file: any) => {
+    //     try {
+    //         const formData = new FormData();
+    //         formData.append("file", file);
 
-            const response = await fetch("/api/upload/", {
-                method: "POST",
-                body: formData,
-            });
+    //         const response = await fetch("/api/upload/", {
+    //             method: "POST",
+    //             body: formData,
+    //         });
 
-            if (!response.ok) throw new Error("Image upload failed");
+    //         if (!response.ok) throw new Error("Image upload failed");
 
-            const data = await response.json();
-            return data.secure_url;
-        } catch (error) {
+    //         const data = await response.json();
+    //         return data.secure_url;
+    //     } catch (error) {
 
 
-            toast({
-                title: "Upload Error",
-                description: "Could not upload image. Try again.",
-            })
+    //         toast({
+    //             title: "Upload Error",
+    //             description: "Could not upload image. Try again.",
+    //         })
 
-            throw error;
-        }
-    };
+    //         throw error;
+    //     }
+    // };
 
     const handleCoverImageUpload = (url:any) => {
         form.setValue("coverImage", url, { shouldValidate: true });

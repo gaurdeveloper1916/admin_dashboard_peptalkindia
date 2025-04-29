@@ -1,4 +1,6 @@
-import { IconBrandProducthunt, IconCalendarWeek, IconChecklist, IconHelpHexagon, IconHexagonNumber1, IconHexagonNumber2, IconHexagonNumber3, IconHexagonNumber4, IconHexagonNumber5, IconHome, IconLayoutDashboard, IconLayoutKanban, IconMessages, IconSettings, IconShoppingCart, IconUserShield } from "@tabler/icons-react"
+import { IconBrandProducthunt,  IconHome, IconLayoutKanban, IconSettings } from "@tabler/icons-react"
+
+// import { IconBrandProducthunt, IconCalendarWeek, IconChecklist, IconHelpHexagon, IconHexagonNumber1, IconHexagonNumber2, IconHexagonNumber3, IconHexagonNumber4, IconHexagonNumber5, IconHome, IconLayoutDashboard, IconLayoutKanban, IconMessages, IconSettings, IconShoppingCart, IconUserShield } from "@tabler/icons-react"
 import { User2Icon } from "lucide-react"
 
 

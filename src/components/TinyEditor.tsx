@@ -81,7 +81,7 @@ export default function TinyEditor({ value, onChange, height = 500, form }: Tiny
         image_title: true,
         automatic_uploads: true,
         file_picker_types: "image",
-        images_upload_handler: async function (blobInfo, progress) {
+        images_upload_handler: async function (blobInfo) {
           return new Promise<string>((resolve, reject) => {
             const reader = new FileReader();
             reader.onload = () => resolve(reader.result as string);

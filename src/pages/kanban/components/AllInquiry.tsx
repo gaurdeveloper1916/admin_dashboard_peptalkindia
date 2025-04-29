@@ -2,7 +2,15 @@ import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 function AllInquiry() {
-  const [inquiries, setInquiries] = useState([]);
+  interface Inquiry {
+    _id: string;
+    fullName: string;
+    email: string;
+    phoneNumber: string;
+    city: string;
+    message: string;
+  }
+  const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -55,12 +63,12 @@ function AllInquiry() {
           <TableBody>
             {inquiries.length > 0 ? (
               inquiries.map((inquiry) => (
-                <TableRow key={inquiry._id}>
-                  <TableCell>{inquiry.fullName}</TableCell>
-                  <TableCell>{inquiry.email}</TableCell>
-                  <TableCell>{inquiry.phoneNumber}</TableCell>
-                  <TableCell>{inquiry.city}</TableCell>
-                  <TableCell>{inquiry.message}</TableCell>
+                <TableRow key={inquiry?._id}>
+                  <TableCell>{inquiry?.fullName}</TableCell>
+                  <TableCell>{inquiry?.email}</TableCell>
+                  <TableCell>{inquiry?.phoneNumber}</TableCell>
+                  <TableCell>{inquiry?.city}</TableCell>
+                  <TableCell>{inquiry?.message}</TableCell>
                 </TableRow>
               ))
             ) : (
