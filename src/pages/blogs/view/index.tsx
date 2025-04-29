@@ -77,7 +77,7 @@ export default function view() {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
         //@ts-ignore
         headers: {
-          Authorization: authToken,
+          Authorization: `Bearer ${authToken}`,
         },
       });
 
@@ -139,7 +139,7 @@ export default function view() {
           //@ts-ignore
           headers: {
             "Content-Type": "application/json",
-            Authorization: authToken,
+            Authorization: `Bearer ${authToken}`,
           },
         }
       );

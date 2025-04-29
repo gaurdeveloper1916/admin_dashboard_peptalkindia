@@ -61,8 +61,7 @@ export default function EditBlogPage() {
                     },
                 ],
             },
-            coverImage:
-                "https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg",
+            coverImage:"https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg",
             status: "draft",
         },
     });
@@ -118,7 +117,7 @@ export default function EditBlogPage() {
                 //@ts-ignore
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: AuthToken,
+                    Authorization: `Bearer ${AuthToken}`,
                 },
                 body: JSON.stringify(data),
             });

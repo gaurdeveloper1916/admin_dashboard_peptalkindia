@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import { ImagePlus, X, Upload, Loader2 } from "lucide-react";
 import { Button } from "./custom/button";
+import { toast } from "./ui/use-toast";
 
 interface ImageUploadProps {
   value: string;
@@ -25,6 +26,10 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
       //   description: "Please upload an image file (JPEG, PNG, etc.)",
       //   variant: "destructive",
       // });
+      toast({
+        title: "Invalid file type",
+        description: "Please upload an image file (JPEG, PNG, etc.)"
+      })
       return;
     }
 
@@ -42,9 +47,9 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
       setIsUploading(true);
 
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("image", file);
 
-      const response = await fetch("/api/upload", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
         method: "POST",
         body: formData,
       });
@@ -54,7 +59,9 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
       }
 
       const data = await response.json();
-      onChange(data.secure_url);
+      console.log(data.file.filename)
+      const url = `http://localhost:8080/images/${data.file.filename}`
+      onChange(url);
 
       // toast({
       //   title: "Image uploaded",
@@ -98,7 +105,7 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
           <img
             src={value}
             alt="Cover image"
-            
+
             className="object-contain"
           />
         </div>
