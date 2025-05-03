@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0-beta.2",
   "type": "module",
+  "homepage": "/admin/",
   "scripts": {
     "dev": "vite --port 5501",
     "build": "tsc && vite build",

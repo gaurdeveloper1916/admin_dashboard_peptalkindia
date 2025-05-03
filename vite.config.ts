@@ -23,9 +23,9 @@ export default defineConfig({
     port: 5501,
   },
   resolve: {
-    alias: {
+   alias: {
       '@': path.resolve(__dirname, './src'),
     },
-  },
-});
+   },
+})
 
