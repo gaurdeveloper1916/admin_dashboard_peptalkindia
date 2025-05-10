@@ -177,6 +177,12 @@ export const sidelinks: SideLink[] = [
     icon: <User2Icon size={18} />,
   },
   {
+    title: 'News Letter',
+    label: '',
+    href: '/news-letter',
+    icon: <User2Icon size={18} />,
+  },
+  {
     title: 'Settings',
     label: '',
     href: '/settings',

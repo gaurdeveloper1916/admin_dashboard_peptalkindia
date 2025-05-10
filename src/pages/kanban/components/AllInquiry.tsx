@@ -20,6 +20,7 @@ function AllInquiry() {
 
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/user/inquiry`, {
           method: 'GET',
+          redirect:'follow',
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',

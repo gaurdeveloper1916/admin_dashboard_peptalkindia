@@ -66,6 +66,9 @@ export function UsersTable({ columns, data }: DataTableProps) {
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
 
+
+  console.log(table)
+
   return (
     <div className='space-y-4'>
       <DataTableToolbar table={table} />
