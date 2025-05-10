@@ -15,7 +15,7 @@ export default function SignIn() {
             height={60}
             alt='Vite'
           />
-            Peptal India Admin Panel
+            Peptalk India Admin Panel
           </div>
 
           <img
