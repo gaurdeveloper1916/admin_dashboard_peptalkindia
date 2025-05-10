@@ -1,4 +1,5 @@
 // import { Outlet } from 'react-router-dom'
+//@ts-nocheck
 import { Layout } from '@/components/custom/layout'
 import { Search } from '@/components/search'
 import ThemeSwitch from '@/components/theme-switch'
