@@ -55,11 +55,11 @@ export default function Sidebar({
               <img
                 src={website}
                 className='relative rounded'
-                width={100}
+                width={60}
                 height={60}
                 alt='Vite'
               />
-              <span className='text-xs'>Peptalk India  </span>
+              <span className='text-sm'>Peptalk India  </span>
             </div>
           </div>
 

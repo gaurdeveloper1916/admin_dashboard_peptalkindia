@@ -1,5 +1,5 @@
-React Shadcn Admin Dashboard
-🚀 React Shadcn Admin Dashboard is a next-generation, fully responsive dashboard crafted for developers and businesses seeking a powerful, intuitive, and customizable solution. This project highlights the integration of must-have features like a Kanban board, data tables, analytics charts, event calendar, messaging system, user/product management, and dynamic theming — everything you need to kickstart your admin panel with confidence.
+React PeptalkAdmin Dashboard
+🚀 React PeptalkAdmin Dashboard is a next-generation, fully responsive dashboard crafted for developers and businesses seeking a powerful, intuitive, and customizable solution. This project highlights the integration of must-have features like a Kanban board, data tables, analytics charts, event calendar, messaging system, user/product management, and dynamic theming — everything you need to kickstart your admin panel with confidence.
 
 🌟 Key Features
 Kanban Board: Streamline project workflows with an intuitive drag-and-drop Kanban board for tasks and activities.
@@ -27,7 +27,7 @@ Responsive Layout: Optimized for mobile, tablet, and desktop views, ensuring a s
 🔧 Technologies Used
 React.js — Build fast and reactive user interfaces.
 
-Shadcn — Elegant, accessible components for modern UIs.
+Peptalk— Elegant, accessible components for modern UIs.
 
 Tailwind CSS — Rapid utility-based styling for a clean and consistent design system.
 
