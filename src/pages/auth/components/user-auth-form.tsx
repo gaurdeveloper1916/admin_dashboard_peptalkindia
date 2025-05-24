@@ -63,7 +63,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         password: data.password,
       };
 
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, payload);
+      const response = await axios.post(`${import.meta.env.VITE_PUBLIC_API_URL}/auth/login`, payload);
 
       const token = response.data.token; // assuming backend returns { token: '...' }
 

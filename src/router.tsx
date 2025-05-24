@@ -257,7 +257,7 @@ const router = createBrowserRouter(
                 Component: (await import('@/pages/inquiry')).default,
               }),
             },
-             {
+            {
               path: 'news-letter',
               lazy: async () => ({
                 Component: (await import('@/pages/news-letter')).default,
@@ -279,6 +279,12 @@ const router = createBrowserRouter(
                   path: 'view',
                   lazy: async () => ({
                     Component: (await import('./pages/blogs/view')).default,
+                  }),
+                },
+                {
+                  path: ':id',
+                  lazy: async () => ({
+                    Component: (await import('./pages/blogs/[id]/page')).default,
                   }),
                 },
               ],

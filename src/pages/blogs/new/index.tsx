@@ -112,7 +112,7 @@ export default function EditBlogPage() {
         try {
             setIsSubmitting(true);
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
+            const response = await fetch(`${import.meta.env.VITE_PUBLIC_API_URL}/blogs`, {
                 method: "POST",
                 //@ts-ignore
                 headers: {
@@ -148,7 +148,7 @@ export default function EditBlogPage() {
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Button variant="outline" size="icon" asChild>
-                        <a href="/blogs/new">
+                        <a href="/admin/blogs/view">
                             <ArrowLeft className="h-4 w-4" />
                         </a>
                     </Button>

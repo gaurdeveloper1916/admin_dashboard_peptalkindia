@@ -18,7 +18,7 @@ function AllInquiry() {
       try {
         const token = localStorage.getItem('token');
 
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/user/inquiry`, {
+        const response = await fetch(`${import.meta.env.VITE_PUBLIC_API_URL}/auth/user/inquiry`, {
           method: 'GET',
           redirect:'follow',
           headers: {

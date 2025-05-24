@@ -49,7 +49,7 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
       const formData = new FormData();
       formData.append("image", file);
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
+      const response = await fetch(`${import.meta.env.VITE_PUBLIC_API_URL}/upload`, {
         method: "POST",
         body: formData,
       });
@@ -60,7 +60,7 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
 
       const data = await response.json();
       console.log(data.file.filename)
-      const url = `http://localhost:8080/images/${data.file.filename}`
+      const url = `${import.meta.env.VITE_PUBLIC_API_URL}/images/${data.file.filename}`
       onChange(url);
 
       // toast({

@@ -62,7 +62,6 @@ export default function view() {
   const [filterStatus, setFilterStatus] = useState<string | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState<string | null>(null);
-//   const { toast } = useToast();
 
   const authToken = localStorage.getItem('token');  ;
 
@@ -74,29 +73,20 @@ export default function view() {
       if (searchTerm) params.append("search", searchTerm);
       if (filterStatus) params.append("status", filterStatus);
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`, {
+      const response = await fetch(`${import.meta.env.VITE_PUBLIC_API_URL}/blogs`, {
         //@ts-ignore
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
       });
-
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
       }
-
       const data = await response.json();
-      console.log(data, "heyy");
       setBlogs(data);
       setAllBlogs(data);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
-      // alert('Failed to load blogs. Please try again.')
-    //   toast({
-    //     title: "Error",
-    //     description: "Failed to load blogs. Please try again.",
-    //     variant: "destructive",
-    //   });
+
     } finally {
       setLoading(false);
     }
@@ -133,7 +123,7 @@ export default function view() {
 
     try {
       const response = await fetch(
-        `http://localhost:6000/blogs/${blogToDelete}`,
+        `http://localhost:8080/blogs/${blogToDelete}`,
         {
           method: "DELETE",
           //@ts-ignore
@@ -171,7 +161,7 @@ export default function view() {
       <div className="flex items-center justify-between p-6">
         <h1 className="text-2xl font-bold tracking-tight">Blogs</h1>
         <Button >
-          <a className="flex justify-center items-center" href="/blogs/new">
+          <a className="flex justify-center items-center" href="/admin/blogs/new">
             <Plus className="mr-2 h-4 w-4" />
             New Blog
           </a>
@@ -292,13 +282,13 @@ export default function view() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuItem asChild>
-                              <a href={`/dashboard/blogs/${blog._id}`}>
+                              <a href={`/admin/blogs/${blog._id}`}>
                                 <Eye className="mr-2 h-4 w-4" />
                                 View
                               </a>
                             </DropdownMenuItem>
                             <DropdownMenuItem asChild>
-                              <a href={`/dashboard/blogs/${blog._id}`}>
+                              <a href={`/admin/blogs/${blog._id}`}>
                                 <FileEdit className="mr-2 h-4 w-4" />
                                 Edit
                               </a>

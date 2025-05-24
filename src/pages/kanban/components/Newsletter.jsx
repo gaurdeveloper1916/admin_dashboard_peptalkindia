@@ -22,7 +22,7 @@ function NewsLetter() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/auth/user/inquiry`,
+          `${import.meta.env.VITE_PUBLIC_API_URL}/auth/user/inquiry`,
           {
             method: "GET",
             headers: {
