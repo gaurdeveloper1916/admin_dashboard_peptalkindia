@@ -284,8 +284,9 @@ const router = createBrowserRouter(
                 {
                   path: ':id',
                   lazy: async () => ({
-                    Component: (await import('./pages/blogs/[id]/page')).default,
+                    Component: (await import('./pages/blogs/[id]/page.tsx')).default as React.FC,
                   }),
+
                 },
               ],
             },
