@@ -11,9 +11,7 @@ import {
 
 function NewsLetter() {
 
-  
-
-  const [inquiries, setInquiries] =  useState([]);
+  const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -31,6 +29,13 @@ function NewsLetter() {
             }
           }
         );
+        if (response.status === 401) {
+          localStorage.removeItem('token')
+          toast({
+            title: 'Session Expired',
+            description: `Please Login again`,
+          })
+        }
 
         if (!response.ok) {
           throw new Error("Failed to fetch inquiries");
@@ -60,7 +65,7 @@ function NewsLetter() {
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
-               <TableHead>PDF Status</TableHead>
+              <TableHead>PDF Status</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -70,7 +75,7 @@ function NewsLetter() {
                 <TableRow key={inquiry._id}>
                   <TableCell>{inquiry.fullName}</TableCell>
                   <TableCell>{inquiry.email}</TableCell>
-                <TableCell>Yes</TableCell>
+                  <TableCell>Yes</TableCell>
 
                 </TableRow>
               ))

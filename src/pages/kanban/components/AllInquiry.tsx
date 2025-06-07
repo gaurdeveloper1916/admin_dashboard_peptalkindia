@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { toast } from "@/components/ui/use-toast";
 
 function AllInquiry() {
   interface Inquiry {
@@ -20,12 +21,20 @@ function AllInquiry() {
 
         const response = await fetch(`${import.meta.env.VITE_PUBLIC_API_URL}/auth/user/inquiry`, {
           method: 'GET',
-          redirect:'follow',
+          redirect: 'follow',
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         });
+
+        if (response.status === 401) {
+          localStorage.removeItem('token')
+          toast({
+            title: 'Session Expired',
+            description: `Please Login again`,
+          })
+        }
 
         if (!response.ok) {
           throw new Error('Failed to fetch inquiries');

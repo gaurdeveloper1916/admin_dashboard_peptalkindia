@@ -38,6 +38,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/custom/button";
+import { toast } from "@/components/ui/use-toast";
 
 interface Blog {
   _id: string;
@@ -63,7 +64,7 @@ export default function view() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState<string | null>(null);
 
-  const authToken = localStorage.getItem('token');  ;
+  const authToken = localStorage.getItem('token');;
 
   const fetchBlogs = async () => {
     try {
@@ -79,6 +80,13 @@ export default function view() {
           Authorization: `Bearer ${authToken}`,
         },
       });
+      if (response.status === 401) {
+        localStorage.removeItem('token')
+        toast({
+          title: 'Session Expired',
+          description: `Please Login again`,
+        })
+      }
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
       }
@@ -139,17 +147,17 @@ export default function view() {
       }
 
       setBlogs((prev) => prev.filter((blog) => blog._id !== blogToDelete));
-    //   toast({
-    //     title: "Success",
-    //     description: "Blog deleted successfully",
-    //   });
+      //   toast({
+      //     title: "Success",
+      //     description: "Blog deleted successfully",
+      //   });
     } catch (error) {
       console.error("Error deleting blog:", error);
-    //   toast({
-    //     title: "Error",
-    //     description: "Failed to delete blog. Please try again.",
-    //     variant: "destructive",
-    //   });
+      //   toast({
+      //     title: "Error",
+      //     description: "Failed to delete blog. Please try again.",
+      //     variant: "destructive",
+      //   });
     } finally {
       setDeleteDialogOpen(false);
       setBlogToDelete(null);
@@ -191,7 +199,7 @@ export default function view() {
                     Status:{" "}
                     {filterStatus
                       ? filterStatus.charAt(0).toUpperCase() +
-                        filterStatus.slice(1)
+                      filterStatus.slice(1)
                       : "All"}
                   </Button>
                 </DropdownMenuTrigger>
@@ -258,11 +266,10 @@ export default function view() {
                       </TableCell>
                       <TableCell>
                         <span
-                          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                            blog.status === "published"
+                          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${blog.status === "published"
                               ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
                               : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100"
-                          }`}
+                            }`}
                         >
                           {blog.status.charAt(0).toUpperCase() +
                             blog.status.slice(1)}

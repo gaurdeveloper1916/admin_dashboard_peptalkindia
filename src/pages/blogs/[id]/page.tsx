@@ -21,6 +21,7 @@ import { ArrowLeft, Eye, EyeOff, Loader2 } from "lucide-react";
 import { ImageUpload } from "@/components/ImageUpload";
 import { useState, useEffect } from "react";
 import TinyEditor from '../../../components/TinyEditor'
+import { toast } from "@/components/ui/use-toast";
 
 const blogSchema = z.object({
   title: z.string().min(5),
@@ -171,6 +172,13 @@ export default function EditBlogPage() {
           body: JSON.stringify(changedData),
         }
       );
+      if (res.status === 401) {
+        localStorage.removeItem('token')
+        toast({
+          title: 'Session Expired',
+          description: `Please Login again`,
+        })
+      }
 
       if (!res.ok) {
         const err = await res.json();
