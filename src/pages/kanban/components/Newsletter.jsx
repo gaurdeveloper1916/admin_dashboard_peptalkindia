@@ -8,12 +8,13 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { useNavigate } from "react-router-dom";
 
 function NewsLetter() {
 
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
@@ -35,6 +36,9 @@ function NewsLetter() {
             title: 'Session Expired',
             description: `Please Login again`,
           })
+          navigate('/')
+
+          
         }
 
         if (!response.ok) {

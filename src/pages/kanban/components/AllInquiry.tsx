@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 function AllInquiry() {
   interface Inquiry {
@@ -13,6 +14,8 @@ function AllInquiry() {
   }
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchInquiries = async () => {
@@ -34,6 +37,8 @@ function AllInquiry() {
             title: 'Session Expired',
             description: `Please Login again`,
           })
+          navigate('/')
+          
         }
 
         if (!response.ok) {

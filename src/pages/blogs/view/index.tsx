@@ -39,6 +39,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/custom/button";
 import { toast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface Blog {
   _id: string;
@@ -65,7 +66,7 @@ export default function view() {
   const [blogToDelete, setBlogToDelete] = useState<string | null>(null);
 
   const authToken = localStorage.getItem('token');;
-
+  const navigate = useNavigate()
   const fetchBlogs = async () => {
     try {
       setLoading(true);
@@ -86,6 +87,8 @@ export default function view() {
           title: 'Session Expired',
           description: `Please Login again`,
         })
+        navigate('/')
+
       }
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
