@@ -87,7 +87,7 @@ export default function view() {
           title: 'Session Expired',
           description: `Please Login again`,
         })
-        navigate('/')
+        navigate('/sign-in')
 
       }
       if (!response.ok) {
@@ -134,7 +134,7 @@ export default function view() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/blogs/${blogToDelete}`,
+        `${import.meta.env.VITE_PUBLIC_API_URL}/blogs/${blogToDelete}`,
         {
           method: "DELETE",
           //@ts-ignore
@@ -154,6 +154,7 @@ export default function view() {
       //     title: "Success",
       //     description: "Blog deleted successfully",
       //   });
+     window.location.reload()
     } catch (error) {
       console.error("Error deleting blog:", error);
       //   toast({

@@ -164,12 +164,12 @@ export const sidelinks: SideLink[] = [
   //     },
   //   ],
   // },
-  {
-    title: 'Users',
-    label: '',
-    href: '/users',
-    icon: <User2Icon size={18} />,
-  },
+  // {
+  //   title: 'Users',
+  //   label: '',
+  //   href: '/users',
+  //   icon: <User2Icon size={18} />,
+  // },
   {
     title: 'Inquiry',
     label: '',
@@ -182,10 +182,10 @@ export const sidelinks: SideLink[] = [
     href: '/news-letter',
     icon: <User2Icon size={18} />,
   },
-  {
-    title: 'Settings',
-    label: '',
-    href: '/settings',
-    icon: <IconSettings size={18} />,
-  },
+  // {
+  //   title: 'Settings',
+  //   label: '',
+  //   href: '/settings',
+  //   icon: <IconSettings size={18} />,
+  // },
 ]

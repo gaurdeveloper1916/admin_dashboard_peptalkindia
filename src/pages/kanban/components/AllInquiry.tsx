@@ -37,7 +37,7 @@ function AllInquiry() {
             title: 'Session Expired',
             description: `Please Login again`,
           })
-          navigate('/')
+          navigate('/sign-in')
           
         }
 

@@ -20,6 +20,7 @@ import { Loader2, ArrowLeft, EyeOff, Eye } from "lucide-react";
 import { Button } from "@/components/custom/button";
 import { ImageUpload } from "@/components/ImageUpload";
 import TinyEditor from "@/components/TinyEditor";
+import { useNavigate } from "react-router-dom";
 // import TinyEditor from "./Tinyeditor";
 
 const blogSchema = z.object({
@@ -39,6 +40,8 @@ const blogSchema = z.object({
 });
 
 export default function EditBlogPage() {
+      const navigate = useNavigate()
+    
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const form = useForm({
@@ -131,6 +134,9 @@ export default function EditBlogPage() {
                 title: "Blog Posted",
                 description: "Your blog has been successfully created!",
             });
+            navigate('/blogs/view')
+
+
 
         } catch (error) {
             toast({
