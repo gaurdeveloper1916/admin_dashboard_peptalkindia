@@ -97,8 +97,8 @@ export default function EditBlogPage() {
       );
       const result = await response.json();
       setLoading(false);
-      if (result._id) {
-        setBlogData(result);
+      if (result.blog._id) {
+        setBlogData(result.blog);
       }
     } catch (error) {
       setLoading(false);
@@ -199,7 +199,7 @@ export default function EditBlogPage() {
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <Button variant="outline" size="icon" asChild>
-          <Link to="/admin/dashboard/blogs">
+          <Link to="#">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
